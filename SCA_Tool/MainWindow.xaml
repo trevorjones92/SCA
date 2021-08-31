@@ -1,0 +1,108 @@
+﻿<Window x:Class="SCA_Tool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SCA_Tool"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="483" Width="857"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="#181735"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+    <Window.Clip>
+        <RectangleGeometry Rect="0,0,857,483" RadiusX="25" RadiusY="25"/>
+    </Window.Clip>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="270"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Background="#0F0F2D" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="67*"/>
+                <ColumnDefinition Width="67*"/>
+                <ColumnDefinition Width="67*"/>
+                <ColumnDefinition Width="67*"/>
+                <ColumnDefinition Width="67*"/>
+                <ColumnDefinition Width="67*"/>
+                <ColumnDefinition Width="32*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="67*"/>
+                <ColumnDefinition Width="67*"/>
+                <ColumnDefinition Width="67*"/>
+                <ColumnDefinition Width="67*"/>
+                <ColumnDefinition Width="67*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="SCA Tool"
+                       Foreground="LightGray"
+                       Grid.Column="1"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontFamily="Consolas Bold"
+                       FontSize="15"/>
+        </Grid>
+        <Button Style="{DynamicResource ButtonStyle1}" Content="Select File Directory" 
+                HorizontalAlignment="Center"
+                Grid.Row="1" 
+                VerticalAlignment="Top" 
+                Height="70" Width="232"
+                FontSize="20" 
+                FontFamily="Segoe UI Light" 
+                Name="SelectAFile"
+                Click="SelectAFile_Click" Margin="0,181,0,0"/>
+        <ListBox Grid.Column="1" HorizontalAlignment="Center" Height="438" Grid.Row="1" VerticalAlignment="Center" Width="595" Background="#181735" BorderBrush="#181735">
+            <ListBox.Clip>
+                <RectangleGeometry Rect="10,5,565,425" RadiusX="25" RadiusY="25"/>
+            </ListBox.Clip>
+            <ListView Height="430" Width="570" Background="#232244" x:Name="softwareList" Foreground="MediumPurple" FontWeight="ExtraBold">
+                <ListView.View>
+                    <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Software Information">
+                        <GridViewColumn Header="Software Name" Width="250" DisplayMemberBinding="{Binding SoftwareName}"/>
+                        <GridViewColumn Header="Version Number" Width="175" DisplayMemberBinding="{Binding VersionNumber}"/>
+                        <GridViewColumn Header="File Type" Width="150" DisplayMemberBinding="{Binding FileType}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ListBox>
+        <TextBox HorizontalAlignment="Center" Height="27" Margin="0,292,0,0" Grid.Row="1" TextWrapping="NoWrap" Background="#232244" Foreground="MediumPurple" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" Width="190" Name="ProgressStatus"/>
+    </Grid>
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <SolidColorBrush Color="AliceBlue"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0.8" CornerRadius="3">
+                            <Border.Effect>
+                                <DropShadowEffect Color="AliceBlue" ShadowDepth="0"/>
+                            </Border.Effect>
+                            <TextBlock Foreground="{TemplateBinding BorderBrush}" Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+</Window>
